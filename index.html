@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprout & Crumb — Vegan Bakery</title>
+<style>
+:root{
+  --cream:#fbf7ef; --sage:#71856d; --dark:#263329; --brown:#9b7357;
+  --light:#eef2e9; --white:#fffdf9; --line:#e4dfd4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--dark);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1100px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:10;background:rgba(251,247,239,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:800;letter-spacing:.5px}
+.logo span{color:var(--sage)}
+.nav-links{display:flex;gap:26px;font-size:14px}
+.nav-links a:hover{color:var(--sage)}
+.hero{padding:90px 0 75px;background:linear-gradient(135deg,#eef2e9 0%,#fbf7ef 58%,#f1e4d8 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
+.eyebrow{color:var(--sage);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:12px;margin-bottom:12px}
+h1{font-family:Georgia,serif;font-size:clamp(48px,7vw,78px);line-height:.98;margin-bottom:22px}
+.hero p{font-size:18px;max-width:540px;color:#536055;margin-bottom:30px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;border:0;border-radius:999px;padding:13px 21px;font-weight:700;cursor:pointer;font-size:14px}
+.btn-primary{background:var(--sage);color:white}
+.btn-secondary{border:1px solid var(--sage);color:var(--sage);background:transparent}
+.hero-art{min-height:370px;border-radius:34px;background:radial-gradient(circle at 30% 30%,#fff 0 8%,transparent 9%),linear-gradient(145deg,#dfe8d9,#e9d8c7);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 55px rgba(50,50,30,.12);font-size:105px}
+section{padding:80px 0}
+.section-head{text-align:center;margin-bottom:40px}
+.section-head h2{font-family:Georgia,serif;font-size:40px;margin-bottom:8px}
+.section-head p{color:#667166}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(40,40,20,.05)}
+.card-img{height:180px;background:linear-gradient(135deg,#e9eee2,#ead9ca);display:flex;align-items:center;justify-content:center;font-size:65px}
+.card-body{padding:20px}
+.card h3{font-family:Georgia,serif;font-size:22px;margin-bottom:5px}
+.card p{font-size:14px;color:#69736a;min-height:48px}
+.price{font-weight:800;margin-top:14px;color:var(--brown)}
+.story{background:var(--light)}
+.story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:55px;align-items:center}
+.story-art{height:340px;border-radius:28px;background:linear-gradient(150deg,#cbd8c3,#f0dfcf);display:flex;align-items:center;justify-content:center;font-size:90px}
+.story h2{font-family:Georgia,serif;font-size:42px;margin-bottom:18px}
+.story p{color:#5f695f;margin-bottom:14px}
+.order-box{background:var(--white);border:1px solid var(--line);border-radius:25px;padding:32px;max-width:760px;margin:auto;box-shadow:0 12px 35px rgba(40,40,20,.06)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{font-size:13px;font-weight:700;display:block;margin-bottom:6px}
+input,select,textarea{width:100%;padding:12px 13px;border:1px solid #d8d4ca;border-radius:12px;background:#fff;font:inherit;color:var(--dark)}
+textarea{min-height:110px;resize:vertical}
+.full{grid-column:1/-1}
+.success{display:none;margin-top:15px;padding:13px;border-radius:12px;background:#e8f0e4;color:#496047;font-weight:700}
+.contact{background:#2d3a30;color:white}
+.contact .section-head p{color:#d6ddd4}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.contact-card{border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:22px;background:rgba(255,255,255,.05)}
+.contact-card strong{display:block;margin-bottom:5px}
+footer{text-align:center;padding:25px;background:#253128;color:#cbd4ca;font-size:13px}
+@media(max-width:800px){
+ .hero-grid,.story-grid{grid-template-columns:1fr}
+ .menu-grid{grid-template-columns:1fr 1fr}
+ .contact-grid{grid-template-columns:1fr}
+ .nav-links{gap:12px;font-size:12px}
+}
+@media(max-width:560px){
+ .nav-inner{height:auto;padding:16px 0;gap:12px;align-items:flex-start}
+ .nav-links{flex-wrap:wrap;justify-content:flex-end}
+ .hero{padding:60px 0}
+ .menu-grid{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}
+ .full{grid-column:auto}
+ h1{font-size:52px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#home">sprout <span>&</span> crumb</a>
+    <div class="nav-links">
+      <a href="#home">Home</a><a href="#menu">Menu</a><a href="#story">Our Story</a>
+      <a href="#order">Pre-order</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Fresh • Vegan • Homemade</div>
+      <h1>Good things,<br>made plant-based.</h1>
+      <p>Welcome to Sprout & Crumb — a small vegan bakery making comforting breads, pastries and sweet treats with simple ingredients and lots of care.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#menu">View Menu</a>
+        <a class="btn btn-secondary" href="#order">Pre-order</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Bakery illustration">🥐🌱</div>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Our menu</div>
+      <h2>Fresh from the oven</h2>
+      <p>Sample products — replace these with your real bakery menu and prices.</p>
+    </div>
+    <div class="menu-grid">
+      <article class="card"><div class="card-img">🍞</div><div class="card-body"><h3>Seeded Sourdough</h3><p>Rustic vegan sourdough with a crunchy seed crust.</p><div class="price">$8</div></div></article>
+      <article class="card"><div class="card-img">🥐</div><div class="card-body"><h3>Almond Croissant</h3><p>Flaky pastry filled with almond cream and baked golden.</p><div class="price">$5</div></div></article>
+      <article class="card"><div class="card-img">🍪</div><div class="card-body"><h3>Chocolate Chip Cookie</h3><p>Soft-centered cookie with dark chocolate chunks.</p><div class="price">$3</div></div></article>
+      <article class="card"><div class="card-img">🧁</div><div class="card-body"><h3>Vanilla Cupcake</h3><p>Light vanilla sponge with smooth plant-based frosting.</p><div class="price">$4</div></div></article>
+      <article class="card"><div class="card-img">🍰</div><div class="card-body"><h3>Berry Cake</h3><p>Soft vanilla layers, berry filling and fresh fruit.</p><div class="price">$28</div></div></article>
+      <article class="card"><div class="card-img">🥖</div><div class="card-body"><h3>Herb Focaccia</h3><p>Olive oil focaccia finished with herbs and sea salt.</p><div class="price">$10</div></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="container story-grid">
+    <div class="story-art">🌱🍞</div>
+    <div>
+      <div class="eyebrow">Our story</div>
+      <h2>Baked with a little more care.</h2>
+      <p>Sprout & Crumb started with a simple idea: plant-based baking can be delicious, comforting and full of character.</p>
+      <p>We make our treats with thoughtful ingredients and a homemade feel — whether you are grabbing a morning pastry or ordering something special.</p>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Plan ahead</div>
+      <h2>Pre-order your favourites</h2>
+      <p>Send us your order request and we’ll get it ready for your chosen date.</p>
+    </div>
+    <div class="order-box">
+      <form id="orderForm">
+        <div class="form-grid">
+          <div><label for="name">Name</label><input id="name" required placeholder="Your name"></div>
+          <div><label for="phone">Phone</label><input id="phone" required placeholder="Your phone number"></div>
+          <div><label for="product">Product</label><select id="product"><option>Seeded Sourdough</option><option>Almond Croissant</option><option>Chocolate Chip Cookie</option><option>Vanilla Cupcake</option><option>Berry Cake</option><option>Herb Focaccia</option></select></div>
+          <div><label for="qty">Quantity</label><input id="qty" type="number" min="1" value="1" required></div>
+          <div><label for="date">Pickup date</label><input id="date" type="date" required></div>
+          <div><label for="time">Pickup time</label><input id="time" type="time" required></div>
+          <div class="full"><label for="notes">Notes</label><textarea id="notes" placeholder="Any special requests?"></textarea></div>
+          <div class="full"><button class="btn btn-primary" type="submit">Send Pre-order Request</button><div class="success" id="success">Thanks! Your request has been received. The bakery will contact you to confirm the order.</div></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Come say hello.</h2>
+      <p>Replace the sample contact details below with your real bakery information.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card"><strong>📍 Location</strong><span>Your bakery address</span></div>
+      <div class="contact-card"><strong>📞 Phone</strong><span>+966 5X XXX XXXX</span></div>
+      <div class="contact-card"><strong>✉️ Email</strong><span>hello@sproutandcrumb.com</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Sprout & Crumb — Vegan Bakery</footer>
+
+<script>
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('success').style.display='block';
+});
+</script>
+</body>
+</html>
